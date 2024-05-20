@@ -1,0 +1,10 @@
+from numpy import random
+
+xploting=random.randint(10,size=5)
+print(np.sort(xploting))
+yploting=random.randint(100,size=5)
+print(np.sort(yploting))
+print()
+
+plt.plot(xploting,yploting)
+plt.show()
