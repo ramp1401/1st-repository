@@ -1,0 +1,34 @@
+import librosa
+import numpy as np
+import soundfile as sf
+import os
+
+input_audio="/content/WhatsApp Video 2024-11-25 at 23.01.42_f256fe2a.mp4"
+output_folder=r"/content/Untitled Folder"
+
+
+def remove_background_sound(input_audio, output_folder):
+
+    # Ensure the output folder exists
+    os.makedirs(output_folder, exist_ok=True)
+
+    # Load the audio file
+    print(f"Loading audio file: {input_audio}")
+    y, sr = librosa.load(input_audio, sr=None)
+
+    # Apply harmonic-percussive separation to isolate vocals
+    print("Removing background sound...")
+    harmonic = librosa.effects.harmonic(y)
+
+    # Save the processed audio to the output folder
+    output_path = os.path.join(output_folder, 'whatsapp_audio.wav')
+    sf.write(output_path, harmonic, sr)
+
+    print(f"Processed audio saved at: {output_path}")
+
+# Main function to execute the program
+def main():
+    remove_background_sound(input_audio, output_folder)
+
+if __name__ == "__main__":
+    main()
