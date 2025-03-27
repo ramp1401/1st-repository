@@ -1,0 +1,12 @@
+# pip install spotdl
+# pip install ffmpeg
+
+import os
+
+playlist_url = "https://open.spotify.com/playlist/3mCc8fSSPB7YnJ3srJGwnm?si=U7BBNaCcRgWew8AZ5gAS1g"  # Replace with your playlist link
+
+# Create a directory for the downloaded songs
+os.makedirs("Spotify_Playlist", exist_ok=True)
+
+# Run spotdl command
+os.system(f'spotdl {playlist_url} --output "Spotify_Playlist/"')
